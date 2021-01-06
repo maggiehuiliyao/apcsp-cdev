@@ -16,10 +16,10 @@ int main()
   double d = 123.456789;
   printf("double d value: %f and size: %lu bytes\n", d, sizeof(d));
 
-  unsigned char e = 'e';
-  printf("unsigned char e value: %c and size: %lu bytes\n", e, sizeof(e));
+  unsigned int e = 2345;
+  printf("unsigned int e value: %d and size: %lu bytes\n", e, sizeof(e));
 
-  signed char f = 'f';
-  printf("signed char f value: %c and size: %lu bytes\n", f, sizeof(f));
+  short int f = 1234;
+  printf("short int f value: %d and size: %lu bytes\n", f, sizeof(f));
 }
 
