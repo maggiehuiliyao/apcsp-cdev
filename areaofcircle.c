@@ -37,7 +37,7 @@ int main(int argc, char* argv[])
   // start and end
   for (int i = 0; i < reps; i ++)
   {
-    printf("the area of %f is %f\n", start, areaOfCircle(start));
+    printf("the area of a circle with radius %f is %f\n", start, areaOfCircle(start));
     start ++;
   }
 }
