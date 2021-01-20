@@ -57,6 +57,7 @@ void deleteStudents()
     for(int i = 0; i < numStudents; i++)
     {
       deleteStudent(students[i]);
+      students[i] = 0;
      }
   }
 
