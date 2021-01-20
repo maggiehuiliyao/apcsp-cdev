@@ -29,7 +29,7 @@ int main()
   strcpy(inpStr, "hello");
   testEncrypt(1, inpStr, shifts, 1, "khoor");
   testEncrypt(0, inpStr, shifts, 1, "hello");
-  
+
   strcpy(inpStr, "z9Z");
   testEncrypt(1, inpStr, shifts, 1, "Cc2");
   testEncrypt(0, inpStr, shifts, 1, "z9Z");
