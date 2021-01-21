@@ -25,10 +25,10 @@ void createStudent(char* fname, char* lname, int age, int id)
   //  - the firstName and lastName strings should be dynamically created
   Student* st = (Student*)malloc(sizeof(Student));
 
-  st->firstName = malloc(sizeof(char) * strlen(fname));
+  st->firstName = (char*)malloc(sizeof(char) * (strlen(fname) + 1));
   strcpy(st->firstName, fname);
 
-  st->lastName = malloc(sizeof(char) * strlen(lname));
+  st->lastName = (char*)malloc(sizeof(char) * (strlen(lname) + 1));
   strcpy(st->lastName, lname);
 
   st->age = age;
@@ -80,7 +80,9 @@ void saveStudents(int key)
     for (int i = 0; i < numStudents; i ++)
     {
       sprintf(fullStdStr, "%s %s %d %ld", students[i]->firstName, students[i]->lastName, students[i]->age, students[i]->id);
-      caesarEncrypt(fullStdStr, key);
+
+      if (key != 0)      
+	caesarEncrypt(fullStdStr, key);
 
       printf("saving: %s\n", fullStdStr);
       fprintf(fp, "%s\n", fullStdStr);
@@ -93,7 +95,8 @@ void saveStudents(int key)
 
 void loadStudents(int key)
 {
-  deleteStudents();
+  if (numStudents > 0)
+    deleteStudents();
 
   FILE* fp = fopen(STUFILE, "r");
   if (fp)
@@ -114,7 +117,9 @@ void loadStudents(int key)
       if (fscanf(fp, "%s %s %s %s", firstName, lastName, strAge, strId) == 4)
       {
 	sprintf(fullStdStr, "%s %s %s %s", firstName, lastName, strAge, strId);
-	caesarDecrypt(fullStdStr, key);	
+
+	if (key != 0)
+	  caesarDecrypt(fullStdStr, key);
 
 	sscanf(fullStdStr, "%s %s %s %s", firstName, lastName, strAge, strId);
 
